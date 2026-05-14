@@ -1,5 +1,4 @@
 import {
-  IconBarbell,
   IconChevronLeft,
   IconChevronRight,
   IconDownload,
@@ -17,14 +16,15 @@ interface BeforeInstallPromptEvent extends Event {
 export default function App() {
   const days: DayKey[] = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
   const getTodayInJakarta = (): DayKey => {
-    const today = new Intl.DateTimeFormat('en-US', {
+    const weekday = new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
       timeZone: 'Asia/Jakarta',
     })
       .format(new Date())
-      .toUpperCase() as DayKey;
+      .slice(0, 3)
+      .toUpperCase();
 
-    return days.includes(today) ? today : 'SAT';
+    return days.find((day) => day === weekday) ?? 'FRI';
   };
 
   const [selectedDay, setSelectedDay] = useState<DayKey>(getTodayInJakarta);
@@ -112,7 +112,11 @@ export default function App() {
           {/* Title - Centered */}
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center gap-2 mb-2">
-              <IconBarbell className="text-blue-600 w-6 h-6 sm:w-7 sm:h-7" />
+              <img
+                src="/pwa-logo.png"
+                alt="Aji Workout logo"
+                className="h-8 w-8 rounded-lg object-cover sm:h-9 sm:w-9"
+              />
               <h1 className="text-base leading-tight sm:text-2xl font-bold text-slate-900 tracking-tight text-left sm:text-center">
                 PPL Upper Bias Hypertrophy Protocol
               </h1>
@@ -191,7 +195,11 @@ export default function App() {
             {/* Section Header */}
             <div className="mb-4 sm:mb-6">
               <div className="flex items-center gap-3 mb-2">
-                <IconBarbell className="text-blue-600 w-5 h-5" />
+                <img
+                  src="/pwa-logo.png"
+                  alt=""
+                  className="h-5 w-5 rounded object-cover"
+                />
                 <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
                   {section.title}
                 </h3>
