@@ -112,11 +112,6 @@ export default function App() {
           {/* Title - Centered */}
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center gap-2 mb-2">
-              <img
-                src="/pwa-logo.png"
-                alt="Aji Workout logo"
-                className="h-8 w-8 rounded-lg object-cover sm:h-9 sm:w-9"
-              />
               <h1 className="text-base leading-tight sm:text-2xl font-bold text-slate-900 tracking-tight text-left sm:text-center">
                 PPL Upper Bias Hypertrophy Protocol
               </h1>
