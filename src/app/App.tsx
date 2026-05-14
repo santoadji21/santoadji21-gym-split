@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
 import {
-  IconDownload,
   IconBarbell,
   IconChevronLeft,
   IconChevronRight,
-  IconMoonStars,
-  IconAlertTriangle,
+  IconDownload,
+  IconMoonStars
 } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
 import { DayKey, workoutData } from '../data/workoutData';
 
 interface BeforeInstallPromptEvent extends Event {
@@ -21,9 +20,11 @@ export default function App() {
     const today = new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
       timeZone: 'Asia/Jakarta',
-    }).format(new Date()) as DayKey;
+    })
+      .format(new Date())
+      .toUpperCase() as DayKey;
 
-    return days.includes(today) ? today : 'THU';
+    return days.includes(today) ? today : 'SAT';
   };
 
   const [selectedDay, setSelectedDay] = useState<DayKey>(getTodayInJakarta);
@@ -130,7 +131,7 @@ export default function App() {
                 </button>
               ) : (
                 <p className="text-xs text-slate-500">
-                  In Chrome mobile, open the menu and tap Install app or Add to Home screen.
+                  You can install this app from your browser menu or share options.
                 </p>
               )}
             </div>
@@ -355,7 +356,7 @@ export default function App() {
                 </button>
               ) : (
                 <p className="text-xs text-slate-500">
-                  Open Chrome menu, then tap Install app or Add to Home screen.
+                  Use your browser menu or share options to install this app or add it to your home screen.
                 </p>
               )}
             </div>
