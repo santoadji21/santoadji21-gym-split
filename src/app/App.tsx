@@ -28,6 +28,7 @@ export default function App() {
   };
 
   const [selectedDay, setSelectedDay] = useState<DayKey>(getTodayInJakarta);
+  const [isLoadingScreenVisible, setIsLoadingScreenVisible] = useState(true);
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstalled, setIsInstalled] = useState(false);
   const [showInstallPopup, setShowInstallPopup] = useState(false);
@@ -35,6 +36,16 @@ export default function App() {
 
   const currentWorkout = workoutData[selectedDay];
   const currentDayIndex = days.indexOf(selectedDay);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsLoadingScreenVisible(false);
+    }, 1400);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
@@ -103,6 +114,28 @@ export default function App() {
     window.sessionStorage.setItem('install-popup-dismissed', 'true');
     setShowInstallPopup(false);
   };
+
+  if (isLoadingScreenVisible) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 px-6">
+        <div className="flex flex-col items-center text-center">
+          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur-sm">
+            <img
+              src="/launchericon-512x512-loader.png"
+              alt="Loading Aji Workout"
+              className="h-28 w-28 rounded-[1.5rem] object-cover sm:h-36 sm:w-36"
+            />
+          </div>
+          <p className="mt-6 text-lg font-semibold tracking-wide text-white">
+            Loading your workout
+          </p>
+          <p className="mt-2 text-sm text-blue-100/80">
+            Preparing today&apos;s plan...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 pb-20">

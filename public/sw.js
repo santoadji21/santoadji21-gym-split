@@ -1,5 +1,5 @@
-const CACHE_NAME = 'gym-split-cache-v2';
-const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest', '/launchericon-192x192.png', '/launchericon-512x512.png'];
+const CACHE_NAME = 'gym-split-cache-v3';
+const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest', '/launchericon-192x192-loader.png', '/launchericon-512x512-loader.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
