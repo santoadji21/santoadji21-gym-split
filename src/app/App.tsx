@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
+  IconDownload,
   IconBarbell,
   IconChevronLeft,
   IconChevronRight,
@@ -7,6 +8,12 @@ import {
   IconAlertTriangle,
 } from '@tabler/icons-react';
 import { DayKey, workoutData } from '../data/workoutData';
+
+interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
+}
 
 export default function App() {
   const days: DayKey[] = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
@@ -20,9 +27,49 @@ export default function App() {
   };
 
   const [selectedDay, setSelectedDay] = useState<DayKey>(getTodayInJakarta);
+  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+  const [showInstallPopup, setShowInstallPopup] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   const currentWorkout = workoutData[selectedDay];
   const currentDayIndex = days.indexOf(selectedDay);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+      setInstallPrompt(event as BeforeInstallPromptEvent);
+    };
+
+    const handleAppInstalled = () => {
+      setIsInstalled(true);
+      setInstallPrompt(null);
+    };
+
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
+
+    setIsInstalled(isStandalone);
+    setIsMobileView(window.matchMedia('(max-width: 640px)').matches);
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInstalled && isMobileView) {
+      const dismissed = window.sessionStorage.getItem('install-popup-dismissed');
+      setShowInstallPopup(dismissed !== 'true');
+    } else {
+      setShowInstallPopup(false);
+    }
+  }, [isInstalled, isMobileView]);
 
   const goToPrevDay = () => {
     if (currentDayIndex > 0) {
@@ -39,6 +86,23 @@ export default function App() {
   const isPrevDisabled = currentDayIndex === 0;
   const isNextDisabled = currentDayIndex === days.length - 1;
 
+  const handleInstallClick = async () => {
+    if (!installPrompt) return;
+
+    await installPrompt.prompt();
+    const choice = await installPrompt.userChoice;
+
+    if (choice.outcome === 'accepted') {
+      setInstallPrompt(null);
+      setShowInstallPopup(false);
+    }
+  };
+
+  const dismissInstallPopup = () => {
+    window.sessionStorage.setItem('install-popup-dismissed', 'true');
+    setShowInstallPopup(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50/30 pb-20">
       {/* Header */}
@@ -54,6 +118,23 @@ export default function App() {
             </div>
             <p className="text-xs sm:text-sm text-slate-600">Ahmad Aji Santoso</p>
           </div>
+          {!isInstalled && (
+            <div className="mt-3 flex justify-center">
+              {installPrompt ? (
+                <button
+                  onClick={handleInstallClick}
+                  className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition-colors hover:bg-blue-100"
+                >
+                  <IconDownload className="h-4 w-4" />
+                  Install App
+                </button>
+              ) : (
+                <p className="text-xs text-slate-500">
+                  In Chrome mobile, open the menu and tap Install app or Add to Home screen.
+                </p>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
@@ -242,6 +323,45 @@ export default function App() {
           </div>
         </div>
       </nav>
+
+      {showInstallPopup && (
+        <div className="fixed inset-x-4 bottom-24 z-[60] sm:hidden">
+          <div className="rounded-2xl border border-blue-200 bg-white p-4 shadow-lg">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-sm font-bold text-slate-900">
+                  Install this app on your device
+                </p>
+                <p className="mt-1 text-xs leading-5 text-slate-600">
+                  Add this workout app to your home screen for faster access and a more app-like experience.
+                </p>
+              </div>
+              <button
+                onClick={dismissInstallPopup}
+                className="text-xs font-semibold text-slate-500"
+              >
+                Later
+              </button>
+            </div>
+
+            <div className="mt-4 flex items-center gap-3">
+              {installPrompt ? (
+                <button
+                  onClick={handleInstallClick}
+                  className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
+                >
+                  <IconDownload className="h-4 w-4" />
+                  Install Now
+                </button>
+              ) : (
+                <p className="text-xs text-slate-500">
+                  Open Chrome menu, then tap Install app or Add to Home screen.
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
