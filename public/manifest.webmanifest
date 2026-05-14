@@ -1,6 +1,7 @@
 {
   "name": "Aji Hypertrophy Workout",
   "short_name": "Aji Workout",
+  "id": "/",
   "description": "PPL Upper Bias Hypertrophy Protocol",
   "start_url": "/",
   "scope": "/",
