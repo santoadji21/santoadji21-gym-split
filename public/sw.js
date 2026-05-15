@@ -1,6 +1,6 @@
 const CACHE_NAME = 'gym-split-app-shell';
 const LEGACY_CACHE_PREFIX = 'gym-split-cache-';
-const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest', '/launchericon-192x19.png', '/launchericon-512x512.png'];
+const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest', '/launchericon-192x192.png', '/launchericon-512x512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
