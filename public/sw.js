@@ -1,18 +1,38 @@
-const CACHE_NAME = 'gym-split-cache-v3';
-const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest', '/launchericon-192x192-loader.png', '/launchericon-512x512-loader.png'];
+const CACHE_NAME = 'gym-split-app-shell';
+const LEGACY_CACHE_PREFIX = 'gym-split-cache-';
+const APP_SHELL = ['/', '/index.html', '/manifest.webmanifest', '/launchericon-192x19.png', '/launchericon-512x512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      await cache.addAll(APP_SHELL);
+    })
   );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
-    )
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME && key.startsWith(LEGACY_CACHE_PREFIX))
+          .map((key) => caches.delete(key))
+      );
+
+      const cache = await caches.open(CACHE_NAME);
+      const requests = await cache.keys();
+
+      await Promise.all(
+        requests
+          .filter((request) => {
+            const url = new URL(request.url);
+            return !APP_SHELL.includes(url.pathname);
+          })
+          .map((request) => cache.delete(request))
+      );
+    })()
   );
   self.clients.claim();
 });
