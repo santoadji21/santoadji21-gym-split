@@ -4,7 +4,7 @@ import {
   IconDownload,
   IconMoonStars
 } from '@tabler/icons-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DayKey, workoutData } from '../data/workoutData';
 
 interface BeforeInstallPromptEvent extends Event {
@@ -13,8 +13,26 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
 }
 
+const dayLabels: Record<DayKey, string> = {
+  SAT: 'Saturday',
+  SUN: 'Sunday',
+  MON: 'Monday',
+  TUE: 'Tuesday',
+  WED: 'Wednesday',
+  THU: 'Thursday',
+  FRI: 'Friday',
+};
+
+const PICKER_LOOP_COPIES = 9;
+
 export default function App() {
   const days: DayKey[] = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
+  const pickerDays = Array.from({ length: PICKER_LOOP_COPIES }, (_, copyIndex) =>
+    days.map((day) => ({
+      day,
+      key: `${copyIndex}-${day}`,
+    }))
+  ).flat();
   const getTodayInJakarta = (): DayKey => {
     const weekday = new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
@@ -32,6 +50,10 @@ export default function App() {
   const [isInstalled, setIsInstalled] = useState(false);
   const [showInstallPopup, setShowInstallPopup] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [isDayMenuOpen, setIsDayMenuOpen] = useState(false);
+  const [focusedDay, setFocusedDay] = useState<DayKey>(selectedDay);
+  const dayPickerRef = useRef<HTMLDivElement | null>(null);
+  const dayOptionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const currentWorkout = workoutData[selectedDay];
   const currentDayIndex = days.indexOf(selectedDay);
@@ -72,6 +94,22 @@ export default function App() {
     }
   }, [isInstalled, isMobileView]);
 
+  useEffect(() => {
+    if (!isDayMenuOpen) return;
+
+    setFocusedDay(selectedDay);
+
+    const selectedIndex = days.indexOf(selectedDay);
+    const middleIndex = Math.floor(PICKER_LOOP_COPIES / 2) * days.length + selectedIndex;
+
+    window.requestAnimationFrame(() => {
+      dayOptionRefs.current[middleIndex]?.scrollIntoView({
+        block: 'center',
+        behavior: 'auto',
+      });
+    });
+  }, [isDayMenuOpen, selectedDay]);
+
   const goToPrevDay = () => {
     if (currentDayIndex > 0) {
       setSelectedDay(days[currentDayIndex - 1]);
@@ -102,6 +140,63 @@ export default function App() {
   const dismissInstallPopup = () => {
     window.sessionStorage.setItem('install-popup-dismissed', 'true');
     setShowInstallPopup(false);
+  };
+
+  const handleDaySelect = (day: DayKey) => {
+    setSelectedDay(day);
+    setFocusedDay(day);
+    setIsDayMenuOpen(false);
+  };
+
+  const getDayButtonClassName = (day: DayKey) => {
+    if (day === focusedDay) {
+      return 'scale-100 text-white opacity-100';
+    }
+
+    const focusedIndex = days.indexOf(focusedDay);
+    const dayIndex = days.indexOf(day);
+    const rawDistance = Math.abs(dayIndex - focusedIndex);
+    const distance = Math.min(rawDistance, days.length - rawDistance);
+
+    if (distance === 1) {
+      return 'scale-[0.98] text-white/60 opacity-90';
+    }
+
+    return 'scale-95 text-white/25 opacity-70';
+  };
+
+  const handleDayPickerScroll = () => {
+    const picker = dayPickerRef.current;
+
+    if (!picker) return;
+
+    const cycleHeight = picker.scrollHeight / PICKER_LOOP_COPIES;
+
+    if (picker.scrollTop < cycleHeight) {
+      picker.scrollTop += cycleHeight * Math.floor(PICKER_LOOP_COPIES / 2);
+    } else if (picker.scrollTop > cycleHeight * (PICKER_LOOP_COPIES - 2)) {
+      picker.scrollTop -= cycleHeight * Math.floor(PICKER_LOOP_COPIES / 2);
+    }
+
+    const pickerCenter = picker.scrollTop + picker.clientHeight / 2;
+    let closestDay = focusedDay;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    dayOptionRefs.current.forEach((element, index) => {
+      if (!element) return;
+
+      const elementCenter = element.offsetTop + element.offsetHeight / 2;
+      const distance = Math.abs(elementCenter - pickerCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestDay = pickerDays[index].day;
+      }
+    });
+
+    if (closestDay !== focusedDay) {
+      setFocusedDay(closestDay);
+    }
   };
 
   return (
@@ -291,42 +386,56 @@ export default function App() {
       {/* Bottom Navigation - Prev/Next */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 shadow-lg z-50">
         <div className="max-w-5xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-between gap-4">
-            {/* Previous Button */}
-            <button
-              onClick={goToPrevDay}
-              disabled={isPrevDisabled}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full transition-all ${
-                isPrevDisabled
-                  ? 'bg-slate-50 cursor-not-allowed opacity-40'
-                  : 'bg-slate-100 hover:bg-slate-200 active:scale-95'
-              }`}
-            >
-              <IconChevronLeft className="text-slate-700 w-5 h-5" />
-              <span className="text-sm font-semibold text-slate-700">Prev</span>
-            </button>
-
-            {/* Current Day Display */}
-            <div className="flex-1 text-center">
-              <span className="text-xl font-bold text-slate-900">{selectedDay}</span>
+          <div className="flex items-center justify-center">
+            <div className="text-center">
+              <button
+                onClick={() => setIsDayMenuOpen((open) => !open)}
+                className="inline-flex items-center gap-2 rounded-full px-3 py-2 transition-colors hover:bg-slate-100"
+              >
+                <span className="text-xl font-bold text-slate-900">{selectedDay}</span>
+              </button>
             </div>
-
-            {/* Next Button */}
-            <button
-              onClick={goToNextDay}
-              disabled={isNextDisabled}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full transition-all ${
-                isNextDisabled
-                  ? 'bg-slate-50 cursor-not-allowed opacity-40'
-                  : 'bg-slate-100 hover:bg-slate-200 active:scale-95'
-              }`}
-            >
-              <span className="text-sm font-semibold text-slate-700">Next</span>
-              <IconChevronRight className="text-slate-700 w-5 h-5" />
-            </button>
           </div>
         </div>
       </nav>
+
+      {isDayMenuOpen && (
+        <div className="fixed inset-0 z-[70]">
+          <button
+            aria-label="Close day picker"
+            onClick={() => setIsDayMenuOpen(false)}
+            className="absolute inset-0 bg-slate-950/20 backdrop-blur-[1px]"
+          />
+
+          <div className="pointer-events-none absolute inset-x-0 bottom-20 flex justify-center px-6">
+            <div className="pointer-events-auto relative w-full max-w-[320px] overflow-hidden rounded-[2rem] border border-white/70 bg-linear-to-b from-slate-900 via-slate-950 to-blue-950 px-6 py-6 shadow-2xl">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-linear-to-b from-slate-900 via-slate-900/85 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-linear-to-t from-blue-950 via-blue-950/85 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-6 top-1/2 h-14 -translate-y-1/2 rounded-2xl border border-white/25 bg-white/10 shadow-inner" />
+
+              <div
+                ref={dayPickerRef}
+                onScroll={handleDayPickerScroll}
+                className="relative max-h-56 snap-y snap-mandatory space-y-1 overflow-y-auto py-16 text-center [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {pickerDays.map(({ day, key }, index) => (
+                  <button
+                    key={key}
+                    ref={(element) => {
+                      dayOptionRefs.current[index] = element;
+                    }}
+                    onClick={() => handleDaySelect(day)}
+                    className={`block w-full snap-center rounded-2xl px-3 py-2 text-2xl font-medium tracking-tight transition-all duration-200 ${getDayButtonClassName(day)}`}
+                    style={day === selectedDay ? { textShadow: '0 0 18px rgba(255,255,255,0.22)' } : undefined}
+                  >
+                    {dayLabels[day]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showInstallPopup && (
         <div className="fixed inset-x-4 bottom-24 z-[60] sm:hidden">
