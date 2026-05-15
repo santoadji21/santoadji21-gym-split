@@ -383,21 +383,14 @@ export default function App() {
         )}
       </main>
 
-      {/* Bottom Navigation - Prev/Next */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 shadow-lg z-50">
-        <div className="max-w-5xl mx-auto px-4 py-3">
-          <div className="flex items-center justify-center">
-            <div className="text-center">
-              <button
-                onClick={() => setIsDayMenuOpen((open) => !open)}
-                className="inline-flex items-center gap-2 rounded-full px-3 py-2 transition-colors hover:bg-slate-100"
-              >
-                <span className="text-xl font-bold text-slate-900">{selectedDay}</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div className="fixed inset-x-0 bottom-5 z-50 flex justify-center px-6">
+        <button
+          onClick={() => setIsDayMenuOpen((open) => !open)}
+          className="inline-flex min-w-28 items-center justify-center rounded-full border border-slate-200 bg-white/92 px-6 py-3 text-xl font-bold text-slate-900 shadow-lg backdrop-blur-md transition-all hover:scale-[1.02] hover:bg-white"
+        >
+          {selectedDay}
+        </button>
+      </div>
 
       {isDayMenuOpen && (
         <div className="fixed inset-0 z-[70]">
