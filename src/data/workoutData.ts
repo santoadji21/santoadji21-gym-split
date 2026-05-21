@@ -160,6 +160,8 @@ export const workoutData: Record<DayKey, {
           { number: '05', name: 'Overhead V-bar Extension', sets: '4x12-15', rest: '90sec', notes: 'Long head stretch tension (Facing away from cable)', alt: ['DB Overhead Extension', 'EZ Bar Overhead Extension'] },
           { number: '06', name: 'Cable Curl', sets: '3x12-15', rir: 'Supinated', rest: '60sec', notes: 'Bicep peak finisher', alt: ['Machine Curl', 'Preacher Cable Curl'] },
           { number: '07', name: 'Hammer Cable Curl', sets: '3x12-15', rir: 'Rope attachment', rest: '60sec', notes: 'Brachialis finisher', alt: ['DB Hammer Curl', 'Cross Body Hammer Curl'] },
+          { number: '08', name: 'Cable Lateral Raise', sets: '3x15-20', rir: 'RIR 1-2 all sets', rest: '60sec', notes: 'Side delt finisher | Light weight strict form | Avoid shoulder fatigue = last ✅', alt: ['DB Lateral Raise', 'Band Lateral Raise'] },
+
         ],
       },
     ],
