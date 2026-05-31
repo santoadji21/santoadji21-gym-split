@@ -38,15 +38,14 @@ export const workoutData: Record<DayKey, {
     sections: [
       {
         title: 'Chest, Tricep & Side Delt',
-        totalSets: 'Chest: ~11-13 sets | Tricep: ~9 sets | Side Delt: ~3 sets',
+        totalSets: 'Chest: ~11-13 sets | Tricep: ~6 sets | Side Delt: ~3 sets',
         exercises: [
           { number: '01', name: 'Incline Smith Press', sets: '3-4x8-10', rir: 'Auto regulate stamina | RIR 2 sets 1-2/3, RIR 1 last set', rest: '2-3min', notes: 'Upper chest, load tension | Control negative 2-3sec | Full stretch at bottom', alt: ['Incline DB Press', 'Incline Machine Press'] },
           { number: '02', name: 'Chest Press Machine', sets: '3-4x10-12', rir: 'Auto regulate stamina | RIR 2 sets 1-2/3, RIR 1 last set', rest: '90sec-2min', notes: 'Mid chest, load tension | Squeeze at top | Adjust seat = handles mid chest', alt: ['Flat DB Press', 'Flat Smith Press'] },
           { number: '03', name: 'Cable Fly Low-to-High', sets: '3x12-15', rir: 'RIR 1-2 all sets', rest: '60-90sec', notes: 'Upper chest constant tension | Slight elbow bend fixed | Squeeze at top', alt: ['Incline DB Fly', 'Pec Deck adjusted angle'] },
-          { number: '04', name: 'JM Press', sets: '3x10-12', rir: 'RIR 2 sets 1-2, RIR 1 last set', rest: '90sec', notes: 'Tricep load tension | Bar to lower chest/upper abs | Elbows slightly flared', alt: ['Close Grip Smith Press', 'EZ Bar JM Press'] },
-          { number: '05', name: 'Dips', sets: '3x8-12', rir: 'Bodyweight controlled', rest: '90sec', notes: 'Tricep stretch tension | Lean forward = more chest | Upright = more tricep | No shrugging at bottom', alt: ['Assisted Dips Machine', 'Cable Pushdown'] },
-          { number: '06', name: 'Tricep Pushdown V-bar', sets: '3x12-15', rir: 'RIR 1-2 all sets', rest: '60sec', notes: 'Tricep constant tension | Lateral head pump | Elbows pinned to sides', alt: ['Rope Pushdown', 'Single Arm Pushdown'] },
-          { number: '07', name: 'Cable Lateral Raise', sets: '3x15-20', rir: 'RIR 1-2 all sets', rest: '60sec', notes: 'Side delt finisher | Light weight strict form | Avoid shoulder fatigue = last ✅', alt: ['DB Lateral Raise', 'Band Lateral Raise'] },
+          { number: '04', name: 'Dips', sets: '3x8-12', rir: 'Bodyweight controlled', rest: '90sec', notes: 'Tricep stretch tension | Lean forward = more chest | Upright = more tricep | No shrugging at bottom', alt: ['Assisted Dips Machine', 'Cable Pushdown'] },
+          { number: '05', name: 'Tricep Pushdown V-bar', sets: '3x12-15', rir: 'RIR 1-2 all sets', rest: '60sec', notes: 'Tricep constant tension | Lateral head pump | Elbows pinned to sides', alt: ['Rope Pushdown', 'Single Arm Pushdown'] },
+          { number: '06', name: 'Cable Lateral Raise', sets: '3x15-20', rir: 'RIR 1-2 all sets', rest: '60sec', notes: 'Side delt finisher | Light weight strict form | Avoid shoulder fatigue = last ✅', alt: ['DB Lateral Raise', 'Band Lateral Raise'] },
         ],
       },
     ],
@@ -151,13 +150,13 @@ export const workoutData: Record<DayKey, {
     sections: [
       {
         title: 'Tricep & Bicep',
-        totalSets: 'Tricep: ~11 sets | Bicep: ~13 sets | Core: ✅',
+        totalSets: 'Tricep: ~9 sets | Bicep: ~13 sets | Core: ✅',
         exercises: [
-          { number: '01', name: 'Close Grip Smith Press', sets: '4x8-10', rir: 'HEAVY', rest: '2min', notes: 'Tricep compound, load tension', alt: ['Close Grip Bench Press', 'Tricep Dips (weighted)'] },
+          { number: '01', name: 'Close Grip Smith Press', sets: '3x8-10', rir: 'HEAVY', rest: '2min', notes: 'Tricep compound, load tension', alt: ['Close Grip Bench Press', 'Tricep Dips (weighted)'] },
           { number: '02', name: 'Incline DB Curl', sets: '4x10-12', rir: 'Supinated, HEAVY', rest: '90sec', notes: 'Bicep stretch tension', alt: ['Cable Curl (low pulley)', 'Incline Cable Curl'] },
           { number: '03', name: 'Hammer Incline DB Curl', sets: '3x12', rir: 'Neutral grip, same bench', rest: '60sec', notes: 'Brachialis stretch tension', alt: ['Incline Cable Hammer Curl', 'Incline Alternating Hammer Curl'] },
           { number: '04', name: 'Tricep Pushdown V-bar', sets: '3x12-15', rest: '60sec', notes: 'Lateral head constant tension', alt: ['Rope Pushdown', 'Single Arm Cable Pushdown'] },
-          { number: '05', name: 'Overhead V-bar Extension', sets: '4x12-15', rest: '90sec', notes: 'Long head stretch tension (Facing away from cable)', alt: ['DB Overhead Extension', 'EZ Bar Overhead Extension'] },
+          { number: '05', name: 'Overhead V-bar Extension', sets: '3x12-15', rest: '90sec', notes: 'Long head stretch tension (Facing away from cable)', alt: ['DB Overhead Extension', 'EZ Bar Overhead Extension'] },
           { number: '06', name: 'Cable Curl', sets: '3x12-15', rir: 'Supinated', rest: '60sec', notes: 'Bicep peak finisher', alt: ['Machine Curl', 'Preacher Cable Curl'] },
           { number: '07', name: 'Hammer Cable Curl', sets: '3x12-15', rir: 'Rope attachment', rest: '60sec', notes: 'Brachialis finisher', alt: ['DB Hammer Curl', 'Cross Body Hammer Curl'] },
           { number: '08', name: 'Cable Lateral Raise', sets: '3x15-20', rir: 'RIR 1-2 all sets', rest: '60sec', notes: 'Side delt finisher | Light weight strict form | Avoid shoulder fatigue = last ✅', alt: ['DB Lateral Raise', 'Band Lateral Raise'] },

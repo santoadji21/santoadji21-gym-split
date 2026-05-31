@@ -5,7 +5,7 @@ import {
   IconMoonStars
 } from '@tabler/icons-react';
 import { useEffect, useRef, useState } from 'react';
-import { DayKey, workoutData5x } from '../data/workoutData';
+import { DayKey, workoutData5x, workoutData } from '../data/workoutData';
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -24,6 +24,8 @@ const dayLabels: Record<DayKey, string> = {
 };
 
 const PICKER_LOOP_COPIES = 9;
+
+const CURRENT_SCHEDULE: 6 | 5 = 5;
 
 export default function App() {
   const days: DayKey[] = ['SAT', 'SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI'];
@@ -55,7 +57,7 @@ export default function App() {
   const dayPickerRef = useRef<HTMLDivElement | null>(null);
   const dayOptionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const currentWorkout = workoutData5x[selectedDay];
+  const currentWorkout = (CURRENT_SCHEDULE === 6 ? workoutData : workoutData5x)[selectedDay];
   const currentDayIndex = days.indexOf(selectedDay);
 
   useEffect(() => {
