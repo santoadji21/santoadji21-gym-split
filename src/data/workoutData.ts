@@ -435,121 +435,7 @@ export const workoutData5x: Record<DayKey, {
   },
 
   TUE: {
-    title: 'Rest & Recovery',
-    isRest: true,
-    sections: [],
-  },
-
-  WED: {
-    title: 'Shoulders + Tricep + Light Bicep',
-    warmUp: [
-      { name: 'Band Pull-Apart', sets: '2x15' },
-      { name: 'Wall Angels', sets: '2x10' },
-      { name: 'Light Lateral Raise', sets: '2x15' },
-      { name: 'Band External Rotation', sets: '2x15' },
-    ],
-    sections: [
-      {
-        title: 'Compound Block (Shoulder + Tricep)',
-        totalSets: 'OHP: ~4 sets | Tricep Compound: ~3 sets | Total compound: ~7 sets',
-        exercises: [
-          {
-            number: '01',
-            name: 'Smith Machine OHP',
-            sets: '4x10-12',
-            rir: 'RIR 2 sets 1-3, RIR 1 last set',
-            rest: '2-3min',
-            notes: 'Primary shoulder compound | Freshest CNS ✅ | 4 days after SAT pressing = rotator recovered ✅ | Core braced, no lumbar arch | Don\'t lock out at top | Control negative 2-3sec',
-            alt: ['DB Shoulder Press', 'Plate Loaded OHP Machine'],
-          },
-          {
-            number: '02',
-            name: 'Close Grip Smith Press',
-            sets: '3x8-10',
-            rir: 'HEAVY | RIR 2 sets 1-2, RIR 1 last set',
-            rest: '2min',
-            notes: 'Tricep compound, load tension | Immediately after OHP = elbow warm ✅ | Both compounds done fresh ✅ | Elbows tucked not flared | Slow negative 2-3sec | 4 days after SAT tricep = recovered ✅',
-            alt: ['Close Grip Bench Press', 'Weighted Tricep Dips'],
-          },
-        ],
-      },
-      {
-        title: 'Shoulder Isolation',
-        totalSets: 'Side Delt: ~7 sets (Machine 4 + Cable 3) | V-taper frequency ✅',
-        exercises: [
-          {
-            number: '03',
-            name: 'Lateral Raise Machine',
-            sets: '4x12-15',
-            rir: 'RIR 2 sets 1-3, RIR 1 last set',
-            rest: '90sec',
-            notes: 'Side delt load tension | V-taper #2 muscle ✅ | Isolation = less CNS needed ✅ | Don\'t shrug at top | Control negative 2-3sec | Elbows slightly bent fixed',
-            alt: ['DB Lateral Raise', 'Cable Lateral Raise'],
-          },
-          {
-            number: '04',
-            name: 'Cable Lateral Raise',
-            sets: '3x15-20',
-            rir: 'RIR 1-2 all sets',
-            rest: '60sec',
-            notes: 'Side delt constant tension pump ✅ | Different stimulus than machine ✅ | Light weight strict form | Control throughout',
-            alt: ['DB Lateral Raise', 'Band Lateral Raise'],
-          },
-        ],
-      },
-      {
-        title: 'Tricep Isolation',
-        totalSets: 'Tricep: ~6 sets | Stretch + Constant tension ✅',
-        exercises: [
-          {
-            number: '05',
-            name: 'Overhead V-bar Extension',
-            sets: '3x12-15',
-            rir: 'Facing away from cable | RIR 1-2 all sets',
-            rest: '90sec',
-            notes: 'Long head stretch tension | Most important tricep head ✅ | Tricep already warm ✅ | Elbows close to head fixed | Full stretch at bottom',
-            alt: ['DB Overhead Extension', 'EZ Bar Overhead Extension'],
-          },
-          {
-            number: '06',
-            name: 'Tricep Pushdown V-bar',
-            sets: '3x12-15',
-            rir: 'RIR 1-2 all sets',
-            rest: '60sec',
-            notes: 'Lateral head constant tension | Pump finisher ✅ | Elbows pinned to sides | Full extension at bottom',
-            alt: ['Rope Pushdown', 'Single Arm Cable Pushdown'],
-          },
-        ],
-      },
-      {
-        title: 'Light Bicep',
-        totalSets: 'Bicep: ~3 sets | Sub-threshold priming ✅',
-        exercises: [
-          {
-            number: '07',
-            name: 'Cable Curl',
-            sets: '3x15-20',
-            rir: 'LIGHT | RIR 2 all sets | NOT to failure',
-            rest: '60sec',
-            notes: 'Sub-threshold priming ✅ | Keeps MPS sensitivity elevated ✅ | Between SUN + THU heavy sessions ✅ | Constant tension pump | Supinate at top pinky up',
-            alt: ['Machine Curl', 'Preacher Cable Curl'],
-          },
-          {
-            number: '08',
-            name: 'Unilateral Cable Rear Delt',
-            sets: '3x15',
-            rir: 'Light, strict',
-            rest: '60sec',
-            notes: 'ALWAYS LAST ✅ | Rear delt cooldown | Posture reset ✅ | Squeeze rear delt not trap | Elbow slightly bent fixed',
-            alt: ['Pec Deck Reverse', 'DB Rear Delt Fly Incline'],
-          },
-        ],
-      },
-    ],
-  },
-
-  THU: {
-    title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
+title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
     warmUp: [
       { name: 'Dead Hang', sets: '2x20-30sec' },
       { name: 'Band Pull-Apart', sets: '2x15' },
@@ -684,6 +570,121 @@ export const workoutData5x: Record<DayKey, {
       { name: 'Bird Dog', sets: '3x8 each side' },
       { name: 'Dead Bug', sets: '3x10' },
       { name: 'Side Plank', sets: '3x20-30sec' },
+    ],
+  },
+
+  WED: {
+    title: 'Rest & Recovery',
+    isRest: true,
+    sections: [],
+    
+  },
+
+  THU: {
+    title: 'Shoulders + Tricep + Light Bicep',
+    warmUp: [
+      { name: 'Band Pull-Apart', sets: '2x15' },
+      { name: 'Wall Angels', sets: '2x10' },
+      { name: 'Light Lateral Raise', sets: '2x15' },
+      { name: 'Band External Rotation', sets: '2x15' },
+    ],
+    sections: [
+      {
+        title: 'Compound Block (Shoulder + Tricep)',
+        totalSets: 'OHP: ~4 sets | Tricep Compound: ~3 sets | Total compound: ~7 sets',
+        exercises: [
+          {
+            number: '01',
+            name: 'Smith Machine OHP',
+            sets: '4x10-12',
+            rir: 'RIR 2 sets 1-3, RIR 1 last set',
+            rest: '2-3min',
+            notes: 'Primary shoulder compound | Freshest CNS ✅ | 4 days after SAT pressing = rotator recovered ✅ | Core braced, no lumbar arch | Don\'t lock out at top | Control negative 2-3sec',
+            alt: ['DB Shoulder Press', 'Plate Loaded OHP Machine'],
+          },
+          {
+            number: '02',
+            name: 'Close Grip Smith Press',
+            sets: '3x8-10',
+            rir: 'HEAVY | RIR 2 sets 1-2, RIR 1 last set',
+            rest: '2min',
+            notes: 'Tricep compound, load tension | Immediately after OHP = elbow warm ✅ | Both compounds done fresh ✅ | Elbows tucked not flared | Slow negative 2-3sec | 4 days after SAT tricep = recovered ✅',
+            alt: ['Close Grip Bench Press', 'Weighted Tricep Dips'],
+          },
+        ],
+      },
+      {
+        title: 'Shoulder Isolation',
+        totalSets: 'Side Delt: ~7 sets (Machine 4 + Cable 3) | V-taper frequency ✅',
+        exercises: [
+          {
+            number: '03',
+            name: 'Lateral Raise Machine',
+            sets: '4x12-15',
+            rir: 'RIR 2 sets 1-3, RIR 1 last set',
+            rest: '90sec',
+            notes: 'Side delt load tension | V-taper #2 muscle ✅ | Isolation = less CNS needed ✅ | Don\'t shrug at top | Control negative 2-3sec | Elbows slightly bent fixed',
+            alt: ['DB Lateral Raise', 'Cable Lateral Raise'],
+          },
+          {
+            number: '04',
+            name: 'Cable Lateral Raise',
+            sets: '3x15-20',
+            rir: 'RIR 1-2 all sets',
+            rest: '60sec',
+            notes: 'Side delt constant tension pump ✅ | Different stimulus than machine ✅ | Light weight strict form | Control throughout',
+            alt: ['DB Lateral Raise', 'Band Lateral Raise'],
+          },
+        ],
+      },
+      {
+        title: 'Tricep Isolation',
+        totalSets: 'Tricep: ~6 sets | Stretch + Constant tension ✅',
+        exercises: [
+          {
+            number: '05',
+            name: 'Overhead V-bar Extension',
+            sets: '3x12-15',
+            rir: 'Facing away from cable | RIR 1-2 all sets',
+            rest: '90sec',
+            notes: 'Long head stretch tension | Most important tricep head ✅ | Tricep already warm ✅ | Elbows close to head fixed | Full stretch at bottom',
+            alt: ['DB Overhead Extension', 'EZ Bar Overhead Extension'],
+          },
+          {
+            number: '06',
+            name: 'Tricep Pushdown V-bar',
+            sets: '3x12-15',
+            rir: 'RIR 1-2 all sets',
+            rest: '60sec',
+            notes: 'Lateral head constant tension | Pump finisher ✅ | Elbows pinned to sides | Full extension at bottom',
+            alt: ['Rope Pushdown', 'Single Arm Cable Pushdown'],
+          },
+        ],
+      },
+      {
+        title: 'Light Bicep',
+        totalSets: 'Bicep: ~3 sets | Sub-threshold priming ✅',
+        exercises: [
+          {
+            number: '07',
+            name: 'Cable Curl',
+            sets: '3x15-20',
+            rir: 'LIGHT | RIR 2 all sets | NOT to failure',
+            rest: '60sec',
+            notes: 'Sub-threshold priming ✅ | Keeps MPS sensitivity elevated ✅ | Between SUN + THU heavy sessions ✅ | Constant tension pump | Supinate at top pinky up',
+            alt: ['Machine Curl', 'Preacher Cable Curl'],
+          },
+          {
+            number: '08',
+            name: 'Unilateral Cable Rear Delt',
+            sets: '3x15',
+            rir: 'Light, strict',
+            rest: '60sec',
+            notes: 'ALWAYS LAST ✅ | Rear delt cooldown | Posture reset ✅ | Squeeze rear delt not trap | Elbow slightly bent fixed',
+            alt: ['Pec Deck Reverse', 'DB Rear Delt Fly Incline'],
+          },
+        ],
+      },
     ],
   },
 
