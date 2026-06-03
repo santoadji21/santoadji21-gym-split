@@ -195,8 +195,8 @@ export const workoutData5x: Record<DayKey, {
     ],
     sections: [
       {
-        title: 'Chest & Tricep',
-        totalSets: 'Chest: ~11-13 sets | Tricep: ~6 sets | Side Delt: ~3 sets',
+        title: 'Primary',
+        totalSets: 'Chest: ~7-8 sets | Compound load tension focus ✅',
         exercises: [
           {
             number: '01',
@@ -216,6 +216,12 @@ export const workoutData5x: Record<DayKey, {
             notes: 'Mid chest, load tension | Squeeze at top | Adjust seat = handles mid chest',
             alt: ['Flat DB Press', 'Flat Smith Press'],
           },
+        ],
+      },
+      {
+        title: 'Isolation',
+        totalSets: 'Chest: ~6 sets | Tricep: ~3 sets | Constant + stretch tension ✅',
+        exercises: [
           {
             number: '03',
             name: 'Cable Fly Low-to-High',
@@ -234,6 +240,12 @@ export const workoutData5x: Record<DayKey, {
             notes: 'Tricep stretch tension | Lean forward = more chest | Upright = more tricep | No shrugging at bottom',
             alt: ['Assisted Dips Machine', 'Cable Pushdown'],
           },
+        ],
+      },
+      {
+        title: 'Finisher',
+        totalSets: 'Tricep: ~3 sets | Side Delt: ~3 sets | Pump focus ✅',
+        exercises: [
           {
             number: '05',
             name: 'Tricep Pushdown V-bar',
@@ -266,8 +278,8 @@ export const workoutData5x: Record<DayKey, {
     ],
     sections: [
       {
-        title: 'Lats, Upper Back, Bicep & Rear Delt',
-        totalSets: 'Lats: ~13 sets | Upper Back: ~3 sets | Bicep: ~6 sets | Rear Delt: ~3 sets | Total: ~25 sets',
+        title: 'Primary',
+        totalSets: 'Lats: ~10 sets | Upper Back: ~3 sets | Heavy compound focus ✅',
         exercises: [
           {
             number: '01',
@@ -296,6 +308,12 @@ export const workoutData5x: Record<DayKey, {
             notes: 'Upper back + rear delt | Elbows flared 45-60° | Squeeze shoulder blades | Minimal bicep ✅',
             alt: ['Incline DB Row', 'Seated Cable Row flared'],
           },
+        ],
+      },
+      {
+        title: 'Isolation',
+        totalSets: 'Bicep: ~3 sets | Stretch tension focus ✅',
+        exercises: [
           {
             number: '04',
             name: 'DB Incline Curl',
@@ -305,6 +323,12 @@ export const workoutData5x: Record<DayKey, {
             notes: 'PRIMARY bicep stretch tension | Arms pre exhausted ✅ | Full stretch at bottom | Slow negative 3sec',
             alt: ['Low Cable Curl incline', 'Incline Cable Curl'],
           },
+        ],
+      },
+      {
+        title: 'Finisher',
+        totalSets: 'Lats: ~6 sets | Bicep: ~3 sets | Rear Delt: ~3 sets | Pump focus ✅',
+        exercises: [
           {
             number: '05',
             name: 'Wide Grip Lat Pulldown',
@@ -355,8 +379,8 @@ export const workoutData5x: Record<DayKey, {
     ],
     sections: [
       {
-        title: 'Legs & Core',
-        totalSets: 'Quad: ~8 sets | Adductor: ~2 sets | Hamstring: ~2 sets | Calf: ~3 sets | Core: ✅ | Lower Back: ✅',
+        title: 'Primary',
+        totalSets: 'Quad: ~6 sets | Compound load tension ✅',
         exercises: [
           {
             number: '01',
@@ -376,6 +400,12 @@ export const workoutData5x: Record<DayKey, {
             notes: 'VL outer sweep + VMO detail ✅ | Narrow feet + low platform | Eccentric 3sec controlled | Don\'t lock knees',
             alt: ['Hack Squat Machine', 'Smith Machine Goblet Squat'],
           },
+        ],
+      },
+      {
+        title: 'Isolation',
+        totalSets: 'Adductor: ~2 sets | Quad: ~3 sets | Hamstring: ~2 sets ✅',
+        exercises: [
           {
             number: '03',
             name: 'Leg Press Wide Sumo',
@@ -403,6 +433,12 @@ export const workoutData5x: Record<DayKey, {
             notes: 'Maintenance only ✅ | Full stretch at bottom | Slow negative 2-3sec | NOT to failure',
             alt: ['Romanian Deadlift LIGHT', 'Cable Pull Through'],
           },
+        ],
+      },
+      {
+        title: 'Finisher',
+        totalSets: 'Calf: ~3 sets | Pump focus ✅',
+        exercises: [
           {
             number: '06',
             name: 'Calf Raise',
@@ -412,30 +448,18 @@ export const workoutData5x: Record<DayKey, {
             notes: 'Full stretch at bottom ✅ | Pause at top 1sec | Don\'t bounce | Controlled throughout',
             alt: ['Seated Calf Raise', 'Smith Machine Calf Raise'],
           },
-          {
-            number: '07',
-            name: 'Dead Bug',
-            sets: '3x10',
-            rest: '60sec',
-            notes: 'TVA activation ✅ | Lower back flat on floor | Breathe out on extension | No waist widening ✅ | Post-PLDD non negotiable ✅',
-            alt: ['Bird Dog', 'Pallof Press'],
-          },
-          {
-            number: '08',
-            name: 'Partial Back Extension',
-            sets: '3x12-15',
-            rir: 'Slow tempo 3-4sec | Bodyweight only',
-            rest: '60sec',
-            notes: 'Lower back training ✅ | Partial ROM only | NEVER hyperextend ⚠️ | Neutral spine always ✅ | 1sec hold at top | Post-PLDD approved ✅',
-            alt: ['Superman Hold', 'Cable Pull Through light'],
-          },
         ],
       },
+    ],
+    core: [
+      { name: 'Dead Bug', sets: '3x10' },
+      { name: 'Bird Dog', sets: '3x8 each side' },
+      { name: 'Partial Back Extension', sets: '3x12-15 | Slow 3-4sec | Bodyweight only' },
     ],
   },
 
   TUE: {
-title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
+    title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
     warmUp: [
       { name: 'Dead Hang', sets: '2x20-30sec' },
       { name: 'Band Pull-Apart', sets: '2x15' },
@@ -443,8 +467,8 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
     ],
     sections: [
       {
-        title: 'Back (Overhand — Minimal Bicep)',
-        totalSets: 'Back: ~9 sets | Re-stimulate after full recovery ✅',
+        title: 'Primary',
+        totalSets: 'Back: ~7 sets | Bicep: ~4 sets | Heavy compound focus ✅',
         exercises: [
           {
             number: '01',
@@ -452,7 +476,7 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
             sets: '4x8-10',
             rir: 'Overhand, elbows flared | HEAVY | RIR 2 sets 1-3, RIR 1 last set',
             rest: '2-3min',
-            notes: 'Primary compound THU ✅ | Overhand = minimal bicep ✅ | Elbows flared 45-60° | Squeeze shoulder blades | Full stretch at front | 4 days after SUN = fully recovered ✅',
+            notes: 'Primary back compound | Overhand = minimal bicep ✅ | Elbows flared 45-60° | Squeeze shoulder blades | Full stretch at front | 2 days after SUN = MPS re-stimulate ✅',
             alt: ['Machine Row', 'Seated Cable Row flared'],
           },
           {
@@ -466,18 +490,18 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
           },
           {
             number: '03',
-            name: 'Close Grip Lat Pulldown',
-            sets: '3x12-15',
-            rir: 'RIR 1-2 all sets',
+            name: 'Incline DB Curl',
+            sets: '4x10-12',
+            rir: 'Supinated, HEAVY | RIR 2 sets 1-3, RIR 1 last set',
             rest: '90sec',
-            notes: 'Constant tension pump | Full stretch at top | Squeeze lats at bottom | Lower lat finisher ✅',
-            alt: ['Neutral Grip Pulldown', 'Supinated Grip Pulldown'],
+            notes: 'PRIMARY bicep heavy ✅ | 2 days after SUN = recovered ✅ | Full stretch at bottom | Slow negative 3sec | Stretch mediated hypertrophy ✅',
+            alt: ['Low Cable Curl incline', 'Incline Cable Curl'],
           },
         ],
       },
       {
-        title: 'Chest Fly (Sub-threshold Frequency)',
-        totalSets: 'Chest: ~6 sets | Sarcoplasmic + connective tissue adaptation ✅',
+        title: 'Isolation',
+        totalSets: 'Chest: ~6 sets | Bicep: ~3 sets | Brachialis ✅',
         exercises: [
           {
             number: '04',
@@ -497,23 +521,8 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
             notes: 'Mid chest metabolic stress ✅ | Minimal front delt ✅ | Full stretch at sides | Squeeze at peak | Sarcoplasmic adaptation ✅',
             alt: ['Cable Fly Horizontal', 'DB Fly Flat'],
           },
-        ],
-      },
-      {
-        title: 'Bicep Heavy',
-        totalSets: 'Bicep: ~12 sets | Complete tension coverage ✅',
-        exercises: [
           {
             number: '06',
-            name: 'Incline DB Curl',
-            sets: '4x10-12',
-            rir: 'Supinated, HEAVY | RIR 2 sets 1-3, RIR 1 last set',
-            rest: '90sec',
-            notes: 'PRIMARY bicep stretch tension ✅ | 4 days after SUN = fully recovered ✅ | Full stretch at bottom | Slow negative 3sec | Stretch mediated hypertrophy ✅',
-            alt: ['Low Cable Curl incline', 'Incline Cable Curl'],
-          },
-          {
-            number: '07',
             name: 'Hammer Incline DB Curl',
             sets: '3x12',
             rir: 'Neutral grip, same bench | RIR 1-2 all sets',
@@ -521,13 +530,28 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
             notes: 'Brachialis stretch tension | Just rotate grip ✅ | Full stretch at bottom | Arm thickness ✅',
             alt: ['Cable Rope Hammer Curl', 'Cross Body Hammer Curl'],
           },
+        ],
+      },
+      {
+        title: 'Finisher',
+        totalSets: 'Back: ~3 sets | Bicep: ~6 sets | Side Delt: ~3 sets | Rear Delt: ~3 sets | Pump focus ✅',
+        exercises: [
+          {
+            number: '07',
+            name: 'Close Grip Lat Pulldown',
+            sets: '3x12-15',
+            rir: 'RIR 1-2 all sets',
+            rest: '90sec',
+            notes: 'Lower lat constant tension pump ✅ | Full stretch at top | Squeeze lats at bottom | Back finisher ✅',
+            alt: ['Neutral Grip Pulldown', 'Supinated Grip Pulldown'],
+          },
           {
             number: '08',
             name: 'Cable Curl',
             sets: '3x12-15',
             rir: 'Supinated | RIR 1-2 all sets',
             rest: '60sec',
-            notes: 'Bicep peak constant tension ✅ | Fills tension coverage gap ✅ | Supinate at top pinky up | Slow negative 2-3sec',
+            notes: 'Bicep peak constant tension ✅ | Supinate at top pinky up | Slow negative 2-3sec',
             alt: ['Machine Curl', 'Preacher Cable Curl'],
           },
           {
@@ -539,19 +563,13 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
             notes: 'Brachialis constant tension finisher | Neutral grip strict | Arm thickness pump ✅',
             alt: ['DB Hammer Curl', 'Cross Body Hammer Curl'],
           },
-        ],
-      },
-      {
-        title: 'Side Delt + Rear Delt',
-        totalSets: 'Side Delt: ~3 sets | Rear Delt: ~3 sets',
-        exercises: [
           {
             number: '10',
             name: 'Cable Lateral Raise',
             sets: '3x15-20',
             rir: 'RIR 1-2 all sets',
             rest: '60sec',
-            notes: 'Side delt 3rd frequency ✅ | 16 sets/week = MAV ✅ | V-taper #2 muscle ✅ | Light weight strict form',
+            notes: 'Side delt frequency ✅ | V-taper #2 muscle ✅ | Light weight strict form',
             alt: ['DB Lateral Raise', 'Band Lateral Raise'],
           },
           {
@@ -577,11 +595,10 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
     title: 'Rest & Recovery',
     isRest: true,
     sections: [],
-    
   },
 
   THU: {
-    title: 'Shoulders + Tricep + Light Bicep',
+    title: 'Shoulders + Tricep + Bicep',
     warmUp: [
       { name: 'Band Pull-Apart', sets: '2x15' },
       { name: 'Wall Angels', sets: '2x10' },
@@ -590,8 +607,8 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
     ],
     sections: [
       {
-        title: 'Compound Block (Shoulder + Tricep)',
-        totalSets: 'OHP: ~4 sets | Tricep Compound: ~3 sets | Total compound: ~7 sets',
+        title: 'Primary',
+        totalSets: 'Shoulder: ~4 sets | Tricep: ~3 sets | Back antagonist: ~3 sets ✅',
         exercises: [
           {
             number: '01',
@@ -599,7 +616,7 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
             sets: '4x10-12',
             rir: 'RIR 2 sets 1-3, RIR 1 last set',
             rest: '2-3min',
-            notes: 'Primary shoulder compound | Freshest CNS ✅ | 4 days after SAT pressing = rotator recovered ✅ | Core braced, no lumbar arch | Don\'t lock out at top | Control negative 2-3sec',
+            notes: 'Primary shoulder compound | Freshest CNS ✅ | 5 days after SAT pressing = rotator fully recovered ✅✅ | Core braced, no lumbar arch | Don\'t lock out at top | Control negative 2-3sec',
             alt: ['DB Shoulder Press', 'Plate Loaded OHP Machine'],
           },
           {
@@ -608,39 +625,33 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
             sets: '3x8-10',
             rir: 'HEAVY | RIR 2 sets 1-2, RIR 1 last set',
             rest: '2min',
-            notes: 'Tricep compound, load tension | Immediately after OHP = elbow warm ✅ | Both compounds done fresh ✅ | Elbows tucked not flared | Slow negative 2-3sec | 4 days after SAT tricep = recovered ✅',
+            notes: 'Tricep compound, load tension | Immediately after OHP = elbow warm ✅ | Both compounds done fresh ✅ | Elbows tucked not flared | Slow negative 2-3sec',
             alt: ['Close Grip Bench Press', 'Weighted Tricep Dips'],
+          },
+          {
+            number: '03',
+            name: 'Wide Grip Lat Pulldown',
+            sets: '3x12-15',
+            rir: 'Moderate weight | RIR 2 all sets | NOT to failure',
+            rest: '90sec',
+            notes: 'Antagonist to pressing ✅ | Back sub-threshold priming ✅ | Tricep rests during pull ✅ | Full stretch at top | Dead hang ✅ | Light-moderate weight only',
+            alt: ['Cable Lat Pulldown Wide', 'Assisted Pull-up'],
           },
         ],
       },
       {
-        title: 'Shoulder Isolation',
-        totalSets: 'Side Delt: ~7 sets (Machine 4 + Cable 3) | V-taper frequency ✅',
+        title: 'Isolation',
+        totalSets: 'Side Delt: ~4 sets | Tricep: ~3 sets | Bicep: ~3 sets ✅',
         exercises: [
           {
-            number: '03',
+            number: '04',
             name: 'Lateral Raise Machine',
             sets: '4x12-15',
             rir: 'RIR 2 sets 1-3, RIR 1 last set',
             rest: '90sec',
-            notes: 'Side delt load tension | V-taper #2 muscle ✅ | Isolation = less CNS needed ✅ | Don\'t shrug at top | Control negative 2-3sec | Elbows slightly bent fixed',
+            notes: 'Side delt load tension | V-taper #2 muscle ✅ | Don\'t shrug at top | Control negative 2-3sec | Elbows slightly bent fixed',
             alt: ['DB Lateral Raise', 'Cable Lateral Raise'],
           },
-          {
-            number: '04',
-            name: 'Cable Lateral Raise',
-            sets: '3x15-20',
-            rir: 'RIR 1-2 all sets',
-            rest: '60sec',
-            notes: 'Side delt constant tension pump ✅ | Different stimulus than machine ✅ | Light weight strict form | Control throughout',
-            alt: ['DB Lateral Raise', 'Band Lateral Raise'],
-          },
-        ],
-      },
-      {
-        title: 'Tricep Isolation',
-        totalSets: 'Tricep: ~6 sets | Stretch + Constant tension ✅',
-        exercises: [
           {
             number: '05',
             name: 'Overhead V-bar Extension',
@@ -652,6 +663,30 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
           },
           {
             number: '06',
+            name: 'Incline DB Curl',
+            sets: '3x10-12',
+            rir: 'Supinated | RIR 2 sets 1-2, RIR 1 last set',
+            rest: '90sec',
+            notes: 'Bicep stretch tension | 3rd frequency ✅ | Full stretch at bottom | Slow negative 3sec | Stretch mediated hypertrophy ✅',
+            alt: ['Low Cable Curl incline', 'Incline Cable Curl'],
+          },
+        ],
+      },
+      {
+        title: 'Finisher',
+        totalSets: 'Side Delt: ~3 sets | Tricep: ~3 sets | Bicep: ~3 sets | Rear Delt: ~3 sets | Pump focus ✅',
+        exercises: [
+          {
+            number: '07',
+            name: 'Cable Lateral Raise',
+            sets: '3x15-20',
+            rir: 'RIR 1-2 all sets',
+            rest: '60sec',
+            notes: 'Side delt constant tension pump ✅ | Different stimulus than machine ✅ | Light weight strict form | Control throughout',
+            alt: ['DB Lateral Raise', 'Band Lateral Raise'],
+          },
+          {
+            number: '08',
             name: 'Tricep Pushdown V-bar',
             sets: '3x12-15',
             rir: 'RIR 1-2 all sets',
@@ -659,23 +694,17 @@ title: 'Upper Frequency (Back + Chest Fly + Bicep Heavy)',
             notes: 'Lateral head constant tension | Pump finisher ✅ | Elbows pinned to sides | Full extension at bottom',
             alt: ['Rope Pushdown', 'Single Arm Cable Pushdown'],
           },
-        ],
-      },
-      {
-        title: 'Light Bicep',
-        totalSets: 'Bicep: ~3 sets | Sub-threshold priming ✅',
-        exercises: [
           {
-            number: '07',
+            number: '09',
             name: 'Cable Curl',
             sets: '3x15-20',
             rir: 'LIGHT | RIR 2 all sets | NOT to failure',
             rest: '60sec',
-            notes: 'Sub-threshold priming ✅ | Keeps MPS sensitivity elevated ✅ | Between SUN + THU heavy sessions ✅ | Constant tension pump | Supinate at top pinky up',
+            notes: 'Bicep sub-threshold pump ✅ | Constant tension | Supinate at top pinky up | Light finisher ✅',
             alt: ['Machine Curl', 'Preacher Cable Curl'],
           },
           {
-            number: '08',
+            number: '10',
             name: 'Unilateral Cable Rear Delt',
             sets: '3x15',
             rir: 'Light, strict',
